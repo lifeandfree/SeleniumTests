@@ -1,0 +1,21 @@
+#*******************************************************************
+#java specific
+*.class
+#*******************************************************************
+#maven specific
+target
+*/target
+
+#eclipse specific
+.project
+*/.project
+
+.settings
+*/.settings
+
+.externalToolBuilders
+*/.externalToolBuilders
+
+.classpath
+*/.classpath
+/bin
