@@ -5,9 +5,9 @@ import org.openqa.selenium.By;
 public class TestBase extends TestKernel
 {
     private static final String PasswordSuperUser = "n@usd40";
-    private static final String PasswordUser = "manager";
+    private static final String PasswordUser = "123";
     private static final String LoginSuperUser = "naumen";
-    private static final String LoginUser = "system";
+    private static final String LoginUser = "TCH";
 
     protected void LoginInAppBySuperUser() {
                     LoginFromSuperUser();
@@ -19,8 +19,9 @@ public class TestBase extends TestKernel
         SeleniumMethod.clickButtonSelector("input.submit-button");
 }
     
-    private void LoginFromUser() {
+    protected void LoginFromUser() {
             enterLoginAndPassword(LoginUser, PasswordUser);
+            SeleniumMethod.clickButtonSelector("input.submit-button");
     }
 
     private void LoginFromSuperUser() {
@@ -35,6 +36,10 @@ public class TestBase extends TestKernel
             SeleniumMethod.find(By.linkText(text)).click();
     }
 
+    protected void tabReqest() {
+        SeleniumMethod.clickToElement("gwt-debug-Tab.f96e2fb5-13ad-00b5-0000-00007a056193");
+        }
+    
     protected void createFavoritesElement(FavoritesObject validFavorites) {
             SeleniumMethod.clickToElement("gwt-debug-favorite");
         fillAddFavoritesForm(validFavorites);

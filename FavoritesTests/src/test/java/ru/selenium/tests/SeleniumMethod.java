@@ -24,7 +24,7 @@ public class SeleniumMethod
     {
         return DRIVER.findElement(by);
     }
-
+    
     public static boolean findElementOnForm(String name)
     {
         return isElementPresent(By.linkText(name));
