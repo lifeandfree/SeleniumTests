@@ -129,4 +129,39 @@ public class FavoritesTests extends TestBase
         assertEquals(Constants.ADD_FOVORITES_TEXT, SeleniumMethod.getElementsText(Constants.GWT_DEBUG_PROPERTY_DIALOG_BOX_CAPTION));
         LogoutFromApp();
     }
+    
+	/**
+     * Тестирование добавления элемента функциональности избранного.
+     * <br>
+     * <ol>
+     * <b>Подготовка.</b>
+     * <br>
+     * <b>Выполнение действия</b>
+     * <li>Заходим в режиме оператора</li>
+     * <li>Добавляем в избранное</li>
+     * <li>Разлогиваемся</li>
+     * <li>Залогиниваемся под другим пользователем</li>
+     * <br>
+     * <b>Проверки</b>
+     * <li>Проверяем, что данной вкладки нет</li>
+     * </ol>
+     */
+    @Test
+    public void testValidFavoritesNotFoundbyOtherUser() throws Exception
+    {
+    	String titleFavorites = AdditionalUtils.randomString(10);
+    	FavoritesObject validFavorites = new FavoritesObject(titleFavorites);
+    	LoginInAppByUser();
+        TransitionToOperatorMode();
+        createFavoritesElement(validFavorites);
+        AdditionalUtils.waitMs(3000L);
+        Assert.assertTrue(SeleniumMethod.findElementLinkOnForm(titleFavorites));
+        AdditionalUtils.waitMs(1000L);
+        LogoutFromApp();
+        LoginInAppBySuperUser();
+        TransitionToOperatorMode();
+        AdditionalUtils.waitMs(3000L);
+        Assert.assertFalse(SeleniumMethod.findElementLinkOnForm(titleFavorites));
+        LogoutFromApp();
+    }
 }
