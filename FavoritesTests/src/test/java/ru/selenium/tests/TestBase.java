@@ -5,9 +5,9 @@ import org.openqa.selenium.By;
 public class TestBase extends TestKernel
 {
     private static final String PasswordSuperUser = "n@usd40";
-    private static final String PasswordUser = "123";
+    private static final String PasswordUser = "n@usd40";
     private static final String LoginSuperUser = "naumen";
-    private static final String LoginUser = "TCH";
+    private static final String LoginUser = "naumen";
 
     protected void LoginInAppBySuperUser() {
                     LoginFromSuperUser();

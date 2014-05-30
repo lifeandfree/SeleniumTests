@@ -34,7 +34,7 @@ public class FavoritesTests extends TestBase
     {
     	String titleFavorites = AdditionalUtils.randomString(10);
     	FavoritesObject validFavorites = new FavoritesObject(titleFavorites);
-        LoginInAppBySuperUser();
+    	LoginInAppByUser();
         TransitionToOperatorMode();
         createFavoritesElement(validFavorites);
         returnToFavoritiesListPage(titleFavorites);
@@ -70,14 +70,14 @@ public class FavoritesTests extends TestBase
     {
     	String titleFavorites = AdditionalUtils.randomString(10);
     	FavoritesObject validFavorites = new FavoritesObject(titleFavorites);
-        LoginInAppBySuperUser();
+    	LoginInAppByUser();
         TransitionToOperatorMode();
         tabReqest();
         createFavoritesElement(validFavorites);
         returnToFavoritiesListPage(titleFavorites);
         AdditionalUtils.waitMs(3000L);
         LogoutFromApp();
-        LoginInAppBySuperUser();
+        LoginInAppByUser();
         TransitionToOperatorMode();
         returnToFavoritiesListPage(titleFavorites);
         Assert.assertTrue(SeleniumMethod.findElementLinkOnForm(titleFavorites));
@@ -101,7 +101,7 @@ public class FavoritesTests extends TestBase
     @Test
     public void testValidFavoritesButton() throws Exception
     {
-    	LoginInAppBySuperUser();
+    	LoginInAppByUser();
         TransitionToOperatorMode();
         Assert.assertTrue(SeleniumMethod.findElementButtonOnForm(Constants.GWT_DEBUG_FAVORITE));
         LogoutFromApp();
@@ -123,7 +123,7 @@ public class FavoritesTests extends TestBase
     @Test
     public void testFormToAddToFavorites() throws Exception
     {
-    	LoginInAppBySuperUser();
+    	LoginInAppByUser();
         TransitionToOperatorMode();
         SeleniumMethod.clickToElement(Constants.GWT_DEBUG_FAVORITE);
         assertEquals(Constants.ADD_FOVORITES_TEXT, SeleniumMethod.getElementsText(Constants.GWT_DEBUG_PROPERTY_DIALOG_BOX_CAPTION));
