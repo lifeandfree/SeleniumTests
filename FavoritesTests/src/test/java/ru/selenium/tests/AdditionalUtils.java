@@ -2,6 +2,10 @@ package ru.selenium.tests;
 
 import java.util.Random;
 
+/**
+ * @author isuhachev
+ * Дополнительные утилиты
+ */
 public class AdditionalUtils
 {
 	static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";

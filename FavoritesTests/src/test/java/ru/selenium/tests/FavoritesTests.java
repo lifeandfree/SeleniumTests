@@ -1,12 +1,9 @@
 package ru.selenium.tests;
 
-import java.util.concurrent.TimeUnit;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
  * Тестирование функциональности избранного
@@ -15,12 +12,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  */
 public class FavoritesTests extends TestBase
 {
-//    @Before
-//    public void setUp() throws Exception
-//    {
-//    	
-//    }
-     /**
+	/**
      * Тестирование добавления элемента функциональности избранного.
      * <br>
      * <ol>
@@ -40,35 +32,101 @@ public class FavoritesTests extends TestBase
     @Test
     public void testValidFavoritesCanBeCreatedTest() throws Exception
     {
-    	String titleFavorites = AdditionalUtils.randomString(1000);
+    	String titleFavorites = AdditionalUtils.randomString(10);
     	FavoritesObject validFavorites = new FavoritesObject(titleFavorites);
         LoginInAppBySuperUser();
+        TransitionToOperatorMode();
         createFavoritesElement(validFavorites);
         returnToFavoritiesListPage(titleFavorites);
         AdditionalUtils.waitMs(3000L);
-        Assert.assertTrue(SeleniumMethod.findElementOnForm(titleFavorites));
-        String elementLinkText = SeleniumMethod.getElementsText(titleFavorites);
+        Assert.assertTrue(SeleniumMethod.findElementLinkOnForm(titleFavorites));
+        String elementLinkText = SeleniumMethod.getElementsLinkText(titleFavorites);
         Assert.assertEquals("Not get the text.", titleFavorites, elementLinkText);
         AdditionalUtils.waitMs(1000L);
         LogoutFromApp();
     }
     
+    /**
+    * Тестирование добавления элемента функциональности избранного с перелогином.
+    * <br>
+    * <ol>
+    * <b>Подготовка.</b>
+    * <br>
+    * <b>Выполнение действия</b>
+    * <li>Заходим в режиме оператора</li>
+    * <li>Нажимаем кнопку Добавить избранное</li>
+    * <li>На форме добавления заполнить поле: название</li>
+    * <li>Нажать Сохранить</li>
+    * <li>Разлогиниваемся</li>
+    * <li>Залогиниваемся</li>
+    * <li>Заходим в режиме оператора</li>
+    * <br>
+    * <b>Проверки</b>
+    * <li>Проверяем наличие давленной вкладки избранное</li>
+    * </ol>
+    */
     @Test
     public void testValidFavoritesCanBeChecked() throws Exception
     {
-    	String titleFavorites = AdditionalUtils.randomString(1000);
+    	String titleFavorites = AdditionalUtils.randomString(10);
     	FavoritesObject validFavorites = new FavoritesObject(titleFavorites);
         LoginInAppBySuperUser();
+        TransitionToOperatorMode();
         tabReqest();
         createFavoritesElement(validFavorites);
         returnToFavoritiesListPage(titleFavorites);
         AdditionalUtils.waitMs(3000L);
         LogoutFromApp();
         LoginInAppBySuperUser();
+        TransitionToOperatorMode();
         returnToFavoritiesListPage(titleFavorites);
-        Assert.assertTrue(SeleniumMethod.findElementOnForm(titleFavorites));
+        Assert.assertTrue(SeleniumMethod.findElementLinkOnForm(titleFavorites));
         AdditionalUtils.waitMs(1000L);
         LogoutFromApp();
     }
-
+    
+    /**
+    * Тестирование нахождение кнопки добавить в избранное.
+    * <br>
+    * <ol>
+    * <b>Подготовка.</b>
+    * <br>
+    * <b>Выполнение действия</b>
+    * <li>Заходим в режиме оператора</li>
+    * <br>
+    * <b>Проверки</b>
+    * <li>Проверяем наличие кнопки Добавить в избранное</li>
+    * </ol>
+    */
+    @Test
+    public void testValidFavoritesButton() throws Exception
+    {
+    	LoginInAppBySuperUser();
+        TransitionToOperatorMode();
+        Assert.assertTrue(SeleniumMethod.findElementButtonOnForm(Constants.GWT_DEBUG_FAVORITE));
+        LogoutFromApp();
+    }
+    
+    /**
+    * Тестирование добавления элемента функциональности избранного с перелогином.
+    * <br>
+    * <ol>
+    * <b>Подготовка.</b>
+    * <br>
+    * <b>Выполнение действия</b>
+    * <li>Заходим в режиме оператора</li>
+    * <br>
+    * <b>Проверки</b>
+    * <li>Проверяем зоголовок в названии формы добавления избранного</li>
+    * </ol>
+    */
+    @Test
+    public void testFormToAddToFavorites() throws Exception
+    {
+    	LoginInAppBySuperUser();
+        TransitionToOperatorMode();
+        SeleniumMethod.clickToElement(Constants.GWT_DEBUG_FAVORITE);
+        assertEquals(Constants.ADD_FOVORITES_TEXT, SeleniumMethod.getElementsText(Constants.GWT_DEBUG_PROPERTY_DIALOG_BOX_CAPTION));
+        LogoutFromApp();
+    }
 }

@@ -25,14 +25,24 @@ public class SeleniumMethod
         return DRIVER.findElement(by);
     }
     
-    public static boolean findElementOnForm(String name)
+    public static boolean findElementLinkOnForm(String name)
     {
         return isElementPresent(By.linkText(name));
     }
 
-    public static String getElementsText(String name)
+    public static boolean findElementButtonOnForm(String name)
+    {
+        return isElementPresent(By.id(name));
+    }
+
+    public static String getElementsLinkText(String name)
     {
         return find(By.linkText(name)).getText();
+    }
+
+    public static String getElementsText(String name)
+    {
+        return find(By.id(name)).getText();
     }
 
     public static boolean isElementPresent(By by)

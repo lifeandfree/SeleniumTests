@@ -13,7 +13,7 @@ public class TestKernel
 {
     private static WebDriver driver;
 
-    private static String baseUrl = "http://192.168.240.92:10080/sd/operator";
+    private static String baseUrl = "http://192.168.240.92:10080/sd/";
 
     private static StringBuffer verificationErrors = new StringBuffer();
 

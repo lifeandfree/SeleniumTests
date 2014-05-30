@@ -23,6 +23,10 @@ public class TestBase extends TestKernel
             enterLoginAndPassword(LoginUser, PasswordUser);
             SeleniumMethod.clickButtonSelector("input.submit-button");
     }
+    
+    protected void TransitionToOperatorMode() {
+        SeleniumMethod.clickButtonSelector("#gwt-debug-switchInterface > img");
+        }
 
     private void LoginFromSuperUser() {
                     enterLoginAndPassword(LoginSuperUser, PasswordSuperUser);
