@@ -10,13 +10,13 @@ public class TestBase extends TestKernel
     private static final String LoginUser = "system";
 
     protected void LoginInAppBySuperUser() {
-                    LoginFromSuperUser();
-                    SeleniumMethod.clickButtonSelector("input.submit-button");
+            LoginFromSuperUser();
+            SeleniumMethod.clickButtonSelector("input.submit-button");
     }
     
     protected void LoginInAppByUser() {
-    	enterLoginAndPassword(LoginUser, PasswordUser);
-        SeleniumMethod.clickButtonSelector("input.submit-button");
+    		enterLoginAndPassword(LoginUser, PasswordUser);
+        	SeleniumMethod.clickButtonSelector("input.submit-button");
 }
     
     protected void LoginFromUser() {
@@ -25,7 +25,7 @@ public class TestBase extends TestKernel
     }
     
     protected void TransitionToOperatorMode() {
-        SeleniumMethod.clickButtonSelector("#gwt-debug-switchInterface > img");
+        	SeleniumMethod.clickButtonSelector("#gwt-debug-switchInterface > img");
         }
 
     private void LoginFromSuperUser() {
@@ -41,13 +41,13 @@ public class TestBase extends TestKernel
     }
 
     protected void tabReqest() {
-        SeleniumMethod.clickToElement("gwt-debug-Tab.f96e2fb5-13ad-00b5-0000-00007a056193");
+        	SeleniumMethod.clickToElement("gwt-debug-Tab.f96e2fb5-13ad-00b5-0000-00007a056193");
         }
     
     protected void createFavoritesElement(FavoritesObject validFavorites) {
-            SeleniumMethod.clickToElement("gwt-debug-favorite");
+        	SeleniumMethod.clickToElement("gwt-debug-favorite");
         fillAddFavoritesForm(validFavorites);
-        SeleniumMethod.clickButtonSelector("#gwt-debug-apply > div > div.g-button-text");
+        	SeleniumMethod.clickButtonSelector("#gwt-debug-apply > div > div.g-button-text");
     }
 
     public void fillAddFavoritesForm(FavoritesObject favoritesObject) {

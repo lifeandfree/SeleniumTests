@@ -31,7 +31,7 @@ public class FavoritesTests extends TestBase
      * <li>Нажать Сохранить</li>
      * <br>
      * <b>Проверки</b>
-     * <li>Проверяем наличие давленной вкладки избранное</li>
+     * <li>Проверяем наличие добавленной вкладки в избранное</li>
      * <li>Проверяем название соотвествует введенному при добавлении</li>
      * </ol>
      */
@@ -48,7 +48,6 @@ public class FavoritesTests extends TestBase
         Assert.assertTrue(SeleniumMethod.findElementLinkOnForm(titleFavorites));
         String elementLinkText = SeleniumMethod.getElementsLinkText(titleFavorites);
         Assert.assertEquals("Not get the text.", titleFavorites, elementLinkText);
-        AdditionalUtils.waitMs(1000L);
     }
     
     /**
@@ -67,7 +66,7 @@ public class FavoritesTests extends TestBase
     * <li>Заходим в режиме оператора</li>
     * <br>
     * <b>Проверки</b>
-    * <li>Проверяем наличие давленной вкладки избранное</li>
+    * <li>Проверяем наличие добавленной вкладки в избранное</li>
     * </ol>
     */
     @Test
@@ -86,7 +85,6 @@ public class FavoritesTests extends TestBase
         TransitionToOperatorMode();
         returnToFavoritiesListPage(titleFavorites);
         Assert.assertTrue(SeleniumMethod.findElementLinkOnForm(titleFavorites));
-        AdditionalUtils.waitMs(1000L);
     }
     
     /**
