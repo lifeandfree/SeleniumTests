@@ -2,6 +2,7 @@ package ru.selenium.tests;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -12,6 +13,11 @@ import org.junit.Test;
  */
 public class FavoritesTests extends TestBase
 {
+    @After
+    public void afterTest() throws Exception
+    {
+    	LogoutFromApp();
+    }
 	/**
      * Тестирование добавления элемента функциональности избранного.
      * <br>
@@ -43,7 +49,6 @@ public class FavoritesTests extends TestBase
         String elementLinkText = SeleniumMethod.getElementsLinkText(titleFavorites);
         Assert.assertEquals("Not get the text.", titleFavorites, elementLinkText);
         AdditionalUtils.waitMs(1000L);
-        LogoutFromApp();
     }
     
     /**
@@ -82,7 +87,6 @@ public class FavoritesTests extends TestBase
         returnToFavoritiesListPage(titleFavorites);
         Assert.assertTrue(SeleniumMethod.findElementLinkOnForm(titleFavorites));
         AdditionalUtils.waitMs(1000L);
-        LogoutFromApp();
     }
     
     /**
@@ -104,7 +108,6 @@ public class FavoritesTests extends TestBase
     	LoginInAppByUser();
         TransitionToOperatorMode();
         Assert.assertTrue(SeleniumMethod.findElementButtonOnForm(Constants.GWT_DEBUG_FAVORITE));
-        LogoutFromApp();
     }
     
     /**
@@ -127,7 +130,6 @@ public class FavoritesTests extends TestBase
         TransitionToOperatorMode();
         SeleniumMethod.clickToElement(Constants.GWT_DEBUG_FAVORITE);
         assertEquals(Constants.ADD_FOVORITES_TEXT, SeleniumMethod.getElementsText(Constants.GWT_DEBUG_PROPERTY_DIALOG_BOX_CAPTION));
-        LogoutFromApp();
     }
     
 	/**
@@ -162,6 +164,5 @@ public class FavoritesTests extends TestBase
         TransitionToOperatorMode();
         AdditionalUtils.waitMs(3000L);
         Assert.assertFalse(SeleniumMethod.findElementLinkOnForm(titleFavorites));
-        LogoutFromApp();
     }
 }
